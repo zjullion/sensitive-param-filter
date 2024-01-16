@@ -1,6 +1,6 @@
 {
   "name": "sensitive-param-filter",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A package for filtering sensitive data from any object - best used to sanitize logs.",
   "main": "dist/index.js",
   "files": [
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zjullion/sensitive-param-filter.git"
+    "url": "git@github.com:zjullion/sensitive-param-filter.git"
   },
   "homepage": "https://github.com/zjullion/sensitive-param-filter",
   "devDependencies": {
