@@ -1,6 +1,6 @@
 name: Run tests
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test:
@@ -10,15 +10,32 @@ jobs:
         os: [windows-latest, macos-latest, ubuntu-latest]
         node-version: ['18', '20']
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install
-      - name: Run validations
-        run: npm run validate
-        env:
-          CI: true
+      - run: pnpm install
+      - run: pnpm tsc
+      - run: pnpm format:check
+        if: success() || failure()
+      - run: pnpm lint
+        if: success() || failure()
+      - run: pnpm circular:check
+        if: success() || failure()
+      - run: pnpm test
+        if: success() || failure()
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: github/codeql-action/init@v2
+        with:
+          languages: javascript-typescript
+      - uses: github/codeql-action/analyze@v2
