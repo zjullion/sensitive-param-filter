@@ -37,8 +37,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
     "circular:check": "dpdm --exit-code circular:1 --warning false src/*",
-    "format:check": "prettier --ignore-path .gitignore --check .",
-    "format:fix": "prettier --ignore-path .gitignore --write .",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint ./src ./test --max-warnings 0",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll=true --coverage=false",
