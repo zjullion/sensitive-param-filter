@@ -1,6 +1,6 @@
 {
   "name": "sensitive-param-filter",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A package for filtering sensitive data from any object - best used to sanitize logs.",
   "main": "dist/index.js",
   "files": [
