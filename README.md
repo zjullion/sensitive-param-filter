@@ -11,8 +11,8 @@ The defaults provided with sensitive-param-filter should work well for most appl
 ## Usage
 
 ```typescript
-import { SensitiveParamFilter } from 'sensitive-param-filter'
-const paramFilter = new SensitiveParamFilter()
+import { SensitiveParamFilter } from 'sensitive-param-filter';
+const paramFilter = new SensitiveParamFilter();
 const rawObject = {
   Authorization: 'Bearer somedatatoken',
   body: {
@@ -20,8 +20,8 @@ const rawObject = {
   },
   method: 'POST',
   url: 'https://pay.example.com?user=bob.bobbington&password=asecurepassword1234',
-}
-const filteredObject = paramFilter.filter(rawObject)
+};
+const filteredObject = paramFilter.filter(rawObject);
 // filteredObject = {
 //   Authorization: 'FILTERED',
 //   body: {
@@ -50,13 +50,13 @@ Partial matches and case-insensitive matches are filtered - if the key `AUTH` is
 ### Options
 
 ```typescript
-import { SPFDefaultFilteredKeys, SensitiveParamFilter } from 'sensitive-param-filter'
+import { SPFDefaultFilteredKeys, SensitiveParamFilter } from 'sensitive-param-filter';
 const filter = new SensitiveParamFilter({
   filterUnknown: false,
   keysToFilter: SPFDefaultFilteredKeys.concat(['data', 'email']),
   replacement: '***',
   whitelist: ['authentic', 'encryption_standard'],
-})
+});
 ```
 
 - **filterUnknown:**
