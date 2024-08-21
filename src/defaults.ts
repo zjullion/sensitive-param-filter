@@ -9,6 +9,6 @@ export const DEFAULT_FILTERED_KEYS = [
   'pass',
   'secret',
   'token',
-]
+];
 
-export const DEFAULT_REPLACEMENT = 'FILTERED'
+export const DEFAULT_REPLACEMENT = 'FILTERED';
